@@ -42,16 +42,16 @@ class LazyCollectorMeta(type):
     def check_collectables(self):
         assert hasattr(self, 'collectables')
         for node in self.collectables:
-            assert isinstance(node, basestring)
+            assert isinstance(node, str)
 
     def check_collector(self):
         assert hasattr(self, 'collector')
         assert isinstance(self.collector, dict)
         for key, value in self.collector.items():
-            assert isinstance(key, basestring)
+            assert isinstance(key, str)
             assert isinstance(value, ltype)
             for v in value:
-                assert isinstance(v, basestring)
+                assert isinstance(v, str)
                 assert v in self.collectables
 
     def store_connections(self):
