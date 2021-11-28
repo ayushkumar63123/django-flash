@@ -116,7 +116,7 @@ class LazyCollectorMeta(type):
         return Lazy(d)
 
     def get_node(self, end_node, params, kwargs):
-        if isinstance(end_node, basestring):
+        if isinstance(end_node, str):
             path = self.paths[(end_node, params)]
         else:
             path = end_node
@@ -147,8 +147,8 @@ def connect(from_nodes, to_node, cache_hit=False):
     from_nodes_orig = from_nodes
     from_nodes = tuple(sorted(from_nodes))
     for val in from_nodes:
-        assert isinstance(val, basestring)
-    assert isinstance(to_node, basestring)
+        assert isinstance(val, str)
+    assert isinstance(to_node, str)
 
     def decorator(method):
         method.connect_params = {
